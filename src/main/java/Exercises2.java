@@ -57,8 +57,44 @@ public class Exercises2 {
     */
 
     public int romanToInt(String s) {
-        // TODO
-        return 0;
+        var sum = 0;
+        for (var i = 0; i < s.length(); i++) {
+            switch (s.charAt(i)){
+                case 'I':
+                    sum += 1;
+                    break;
+                case 'V':
+                    sum += 5;
+                    break;
+                case 'X':
+                    sum += 10;
+                    break;
+                case 'L':
+                    sum += 50;
+                    break;
+                case 'C':
+                    sum += 100;
+                    break;
+                case 'D':
+                    sum += 500;
+                    break;
+                case 'M':
+                    sum += 1000;
+                    break;
+                default:
+                    break;
+            }
+        }
+        for (var i = 1; i < s.length(); i++) {
+            if ((s.charAt(i) == 'V' && s.charAt(i - 1) == 'I') || (s.charAt(i) == 'X' && s.charAt(i - 1) == 'I')) {
+                sum -= 2;
+            } else if ((s.charAt(i) == 'L' && s.charAt(i - 1) == 'X') || (s.charAt(i) == 'C' && s.charAt(i - 1) == 'X')) {
+                sum -= 20;
+            } else if ((s.charAt(i) == 'D' && s.charAt(i - 1) == 'C') || (s.charAt(i) == 'M' && s.charAt(i - 1) == 'C')) {
+                sum -= 200;
+            }
+        }
+        return sum;
     }
 
     /*
@@ -74,9 +110,6 @@ public class Exercises2 {
     public static void main(String[] args) {
         int[] ints = {1 , 2 , 3 , 4 , 5};
         Exercises2 a = new Exercises2();
-        int[] re = a.twoSum(ints, 3);
-        for (int i = 0; i < re.length; i++) {
-            System.out.println(re[i]);
-        }
+        System.out.print(a.romanToInt("MCMXCIV"));
     }
 }
