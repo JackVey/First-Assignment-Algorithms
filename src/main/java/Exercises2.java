@@ -14,7 +14,7 @@ public class Exercises2 {
     */
 
     public int[] twoSum(int[] nums, int target) {
-        int[] returns = {};
+        int[] returns = new int[2];
         for (int i = 0; i < nums.length; i++) {
             for (int j = i + 1; j < nums.length; j++) {
                 if (nums[i] + nums[j] == target){
@@ -72,6 +72,11 @@ public class Exercises2 {
     }
 
     public static void main(String[] args) {
-        // test your code here!
+        int[] ints = {1 , 2 , 3 , 4 , 5};
+        Exercises2 a = new Exercises2();
+        int[] re = a.twoSum(ints, 3);
+        for (int i = 0; i < re.length; i++) {
+            System.out.println(re[i]);
+        }
     }
 }
