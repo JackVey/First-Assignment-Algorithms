@@ -1,7 +1,5 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class Exercises2 {
 
@@ -10,12 +8,20 @@ public class Exercises2 {
     such that they add up to target.
 
     You may assume that each input would have exactly one solution, and you may not use the same element twice.
-    You can return the answer in any order.
+    You can return the anwer in any order.
     */
 
     public int[] twoSum(int[] nums, int target) {
-        // TODO
-        return null;
+        int[] returns = new int[2];
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[i] + nums[j] == target){
+                    returns[0] = i;
+                    returns[1] = j;
+                }
+            }
+        }
+        return returns;
     }
 
     /*
@@ -49,8 +55,44 @@ public class Exercises2 {
     */
 
     public int romanToInt(String s) {
-        // TODO
-        return 0;
+        var sum = 0;
+        for (var i = 0; i < s.length(); i++) {
+            switch (s.charAt(i)){
+                case 'I':
+                    sum += 1;
+                    break;
+                case 'V':
+                    sum += 5;
+                    break;
+                case 'X':
+                    sum += 10;
+                    break;
+                case 'L':
+                    sum += 50;
+                    break;
+                case 'C':
+                    sum += 100;
+                    break;
+                case 'D':
+                    sum += 500;
+                    break;
+                case 'M':
+                    sum += 1000;
+                    break;
+                default:
+                    break;
+            }
+        }
+        for (var i = 1; i < s.length(); i++) {
+            if ((s.charAt(i) == 'V' && s.charAt(i - 1) == 'I') || (s.charAt(i) == 'X' && s.charAt(i - 1) == 'I')) {
+                sum -= 2;
+            } else if ((s.charAt(i) == 'L' && s.charAt(i - 1) == 'X') || (s.charAt(i) == 'C' && s.charAt(i - 1) == 'X')) {
+                sum -= 20;
+            } else if ((s.charAt(i) == 'D' && s.charAt(i - 1) == 'C') || (s.charAt(i) == 'M' && s.charAt(i - 1) == 'C')) {
+                sum -= 200;
+            }
+        }
+        return sum;
     }
 
     /*
@@ -59,11 +101,11 @@ public class Exercises2 {
     */
 
     public List<List<Integer>> permute(int[] nums) {
-        // TODO
         return null;
     }
 
+
     public static void main(String[] args) {
-        // test your code here!
+
     }
 }
