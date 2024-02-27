@@ -101,7 +101,35 @@ public class Exercises2 {
     */
 
     public List<List<Integer>> permute(int[] nums) {
-        return null;
+        List<List<Integer>> res = new ArrayList<>();
+        int x = nums.length - 1;
+        permutations(res, nums, 0, x);
+        return res;
+    }
+
+    static void swap(int nums[], int l, int i)
+    {
+        int temp = nums[l];
+        nums[l] = nums[i];
+        nums[i] = temp;
+    }
+
+    static void permutations(List<List<Integer>> res, int[] nums, int l, int h)
+    {
+        if (l == h) {
+            List<Integer> a = new ArrayList<Integer>();
+            for (int i = 0; i < nums.length; i++) {
+                a.add(nums[i]);
+            }
+            res.add(new ArrayList(a));
+            return;
+        }
+
+        for (int i = l; i <= h; i++) {
+            swap(nums, l, i);
+            permutations(res, nums, l + 1, h);
+            swap(nums, l, i);
+        }
     }
 
 
